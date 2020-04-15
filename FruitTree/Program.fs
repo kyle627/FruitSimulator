@@ -1,8 +1,9 @@
 ﻿//Kyle Evanglisto
-//4/14/2020
+//4/14/2020 -> 4/15/2020
 //prof aw
 //Programming Part 3 Project 3
 //Program 3/3
+//No mutable variables were used 
 
 open System
 
@@ -31,20 +32,20 @@ let main argv =
         let numTreesFloat = float numberTrees //String --> Float
         let rec trees() =
             if numTreesFloat > 500. then
-                printfn "It is most likely impossible to harvest that many apples in %s" numberDays
+                printfn "It is most likely impossible to harvest that many fruits in %s" numberDays
                 printfn "days -- try harvesting less for this harvest"
                 systemloop() //Call recursive function to gather proper input
         trees() 
 
 
-        //formula to find tree yield for 1 year
-        let fruitCount (x : float) = x * (48. / (0.30)) //approx 160 apples per tree (.30 representing wieght on one apple in lbs)
+        //formula to find tree yield for 1 full harvest
+        let fruitCount (x : float) = x * (48.0 / (0.20)) //approx 160 apples per ONE -- more trees, more fruits -- tree (.20 representing wieght on one fruit in lbs)
         //divide by 48 apples per brussel. Then multiplying that by the number of days the user is harvesting by. 
 
         //recursive function to help most accurately determine crop yield
         let rec treeCount (num : float) = 
             if num < 1. then 1.
-            else (0.5 * num) + treeCount(num / 2.) //acounts for extra apples harvested in formula.
+            else (0.5 * num) + treeCount(num / 2.) //acounts for extra fruits harvested in formula. Not every harvest has a cookie cutter number of fruits
 
         let rec harvestLoop() = 
         
@@ -56,7 +57,7 @@ let main argv =
 
             printf "In %s" numberDays 
             printf " days your harvest will be aproximately: %f" totalHarvest
-            printf " apples!\n"
+            printf " fruits!\n"
         
             //part 2
 
@@ -71,28 +72,27 @@ let main argv =
                     harvestLoop() //Call recursive function to gather proper input
             overHarvestControl() //defines the over harvest control recursion
 
-            printfn "What is the price per fruit your fruit sells at: please format in '0.89' for example"
-            let priceperFruit = Console.ReadLine()
-            let priceperFruitFloat = float priceperFruit //String --> Float
-
-            let rec priceControl() =
-                if priceperFruitFloat <= 0. then 
-                    printfn "You won't make any money off this sale but okay."
-            priceControl() //defines price control recursion 
-
-            let total = (priceperFruitFloat : float) * (ammountSellingFloat : float)
-
-            printf "The total you will make for your harvest is: "
-            Console.WriteLine(total) //outputs the farmer's total harvest profit
+            let rec fruitMatchingCheck()=
+                printfn "What type of fruit are you selling? Enter (1 , 2 , or 3) Only choose 1"
+                printfn "\n1.Apples\n2.Cherries\n3.Peaches"
+                let typeFruit = Console.ReadLine()
+                //type matching to determine what type of fruit the farmer has
+                //each fruit is worth a different amount, so depending on what trees the farmer hazrvests will yield a different profit
+                match typeFruit with
+                |"1"->printfn"Your total profit will be: %f" (ammountSellingFloat * 0.89) //0.89 represents apple price
+                |"2"->printfn"Your total profit will be: %f" (ammountSellingFloat * 0.62) //0.62 represents cherry price
+                |"3"->printfn"Your total profit will be: %f" (ammountSellingFloat * 0.78) // 0.78 represents peach price
+            fruitMatchingCheck()
             
         harvestLoop() //defines harvest recursion
         
-        printf "Do you want to test another harvest? Enter = 'y' for yes or 'n' for no"
+        printf "Do you want to test another harvest? Enter = 'y' for yes or 'n' for no  "
         let answer = Console.ReadLine()
-        if answer = "y" then
-            systemloop() //Call recursive function to re run the program
-        else
-           exit 0 //quit
+        match answer with
+        |"yes"-> systemloop()   
+        |"y"-> systemloop()
+        |"Y"-> systemloop()
+        |"Yes"->systemloop()
 
     systemloop() //defines system recursion
     exit 0
