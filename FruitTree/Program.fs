@@ -93,6 +93,12 @@ let main argv =
         |"y"-> systemloop()
         |"Y"-> systemloop()
         |"Yes"->systemloop()
+        |"no"->exit 0
+        |"n" -> exit 0
+        |"No"-> exit 0
+        |"N"-> exit 0
+        
+
 
     systemloop() //defines system recursion
     exit 0

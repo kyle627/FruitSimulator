@@ -112,11 +112,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\CCC\\CSC-226- Wright\\Project 3\\Tree\\FruitTree\\FruitTree\\FruitTree.fsproj",
+      "projectUniqueName": "E:\\CCC\\CSC-226- Wright\\Project 3\\FruitSim\\FruitTree\\FruitTree\\FruitTree.fsproj",
       "projectName": "FruitTree",
-      "projectPath": "E:\\CCC\\CSC-226- Wright\\Project 3\\Tree\\FruitTree\\FruitTree\\FruitTree.fsproj",
+      "projectPath": "E:\\CCC\\CSC-226- Wright\\Project 3\\FruitSim\\FruitTree\\FruitTree\\FruitTree.fsproj",
       "packagesPath": "C:\\Users\\kylee\\.nuget\\packages\\",
-      "outputPath": "E:\\CCC\\CSC-226- Wright\\Project 3\\Tree\\FruitTree\\FruitTree\\obj\\",
+      "outputPath": "E:\\CCC\\CSC-226- Wright\\Project 3\\FruitSim\\FruitTree\\FruitTree\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\kylee\\AppData\\Roaming\\NuGet\\NuGet.Config",
